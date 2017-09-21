@@ -97,5 +97,11 @@ export default function resolvePath(sourcePath, currentFile, opts) {
     return resolvedPath !== null;
   });
 
-  return resolvedPath;
+  // Ensure path was resolved
+  if(!resolvedPath) {
+      return resolvedPath;
+  }
+
+  // Convert to absolute path
+  return path.resolve(path.dirname(absoluteCurrentFile), resolvedPath);;
 }
